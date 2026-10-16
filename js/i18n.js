@@ -10,6 +10,7 @@ const STRINGS = {
     "demo.banner": "Mode demo: anjing di sini hanya contoh, dan data yang kamu isi hanya tersimpan di browser ini.",
     "footer": "Rumah Anabul · Komunitas pencinta anjing Indonesia. Adopsi selalu gratis, anjing tidak untuk dijual.",
 
+    "hero.kicker": "Dari pemilik ke pemilik · Selalu gratis",
     "hero.title": "Rumah baru untuk anjing yang disayang",
     "hero.sub": "Kadang pemilik terpaksa melepas anjingnya karena pindah, kesulitan ekonomi, atau sakit. Di sini mereka bisa menemukan adopter yang benar-benar sayang anjing.",
     "hero.ctaAdopt": "Lihat anjing",
@@ -23,6 +24,7 @@ const STRINGS = {
     "browse.anySex": "Semua jenis kelamin",
     "browse.count": "{n} anjing ditemukan",
     "browse.empty": "Belum ada anjing yang cocok. Coba ubah filternya.",
+    "browse.none": "Belum ada anjing yang dicarikan rumah. Punya anjing yang butuh rumah baru?",
 
     "how.title": "Cara kerjanya",
     "how.ownerTitle": "Untuk pemilik",
@@ -186,6 +188,7 @@ const STRINGS = {
     "demo.banner": "Demo mode: these dogs are examples, and anything you enter is saved only in this browser.",
     "footer": "Rumah Anabul · A community for dog lovers in Indonesia. Adoption is always free. Dogs are never for sale.",
 
+    "hero.kicker": "Owner to owner · Always free",
     "hero.title": "A new home for a much-loved dog",
     "hero.sub": "Sometimes owners have to give up their dog because they're moving, struggling with money, or ill. Here they can find adopters who truly love dogs.",
     "hero.ctaAdopt": "See the dogs",
@@ -199,6 +202,7 @@ const STRINGS = {
     "browse.anySex": "Any sex",
     "browse.count": "{n} dogs found",
     "browse.empty": "No dogs match yet. Try changing the filters.",
+    "browse.none": "No dogs are listed yet. Have a dog that needs a new home?",
 
     "how.title": "How it works",
     "how.ownerTitle": "For owners",

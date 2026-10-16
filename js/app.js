@@ -23,13 +23,16 @@ function formatDate(iso) {
   return new Date(iso).toLocaleDateString(lang === "id" ? "id-ID" : "en-GB", { day: "numeric", month: "short", year: "numeric" });
 }
 
-const PLACEHOLDER_COLORS = ["#ffe8d6", "#e3f2fd", "#e8f5e9", "#fce4ec", "#fff8e1", "#ede7f6"];
+// Dogs without a photo get the logo on one of a few warm tints from the palette
+const PLACEHOLDER_TINTS = ["tint-1", "tint-2", "tint-3", "tint-4"];
 
 function photoHTML(dog) {
   if (dog.photo_url) return `<img src="${esc(dog.photo_url)}" alt="${t("dog.photoOf", { name: dog.name })}" loading="lazy" />`;
   const n = [...String(dog.id)].reduce((sum, c) => sum + c.charCodeAt(0), 0);
-  return `<div class="placeholder" style="background:${PLACEHOLDER_COLORS[n % PLACEHOLDER_COLORS.length]}" aria-hidden="true">🐶</div>`;
+  return `<div class="placeholder ${PLACEHOLDER_TINTS[n % PLACEHOLDER_TINTS.length]}">${logoSVG()}</div>`;
 }
+
+const PIN_ICON = `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>`;
 
 // Turns 0812-3456-789 into a wa.me link with Indonesia's country code.
 function waLink(phone) {
@@ -109,7 +112,7 @@ function dogCard(dog) {
       <div class="dog-info">
         <h3>${esc(dog.name)}</h3>
         <p class="muted">${esc(dog.breed || t("dog.mixed"))}</p>
-        <p class="location">${esc(dog.city)}, ${esc(dog.province)}</p>
+        <p class="location">${PIN_ICON}${esc(dog.city)}, ${esc(dog.province)}</p>
         <div class="tags">
           <span class="tag">${t("age." + dog.age_group)}</span>
           <span class="tag">${t("size." + dog.size)}</span>
@@ -129,13 +132,17 @@ async function viewBrowse() {
 
   app.innerHTML = `
     <section class="hero">
-      <div class="container">
-        <h1>${t("hero.title")}</h1>
-        <p>${t("hero.sub")}</p>
-        <div class="hero-actions">
-          <button type="button" class="btn" id="scroll-dogs">${t("hero.ctaAdopt")}</button>
-          <a href="#/post" class="btn btn-outline">${t("hero.ctaRehome")}</a>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="hero-kicker">${t("hero.kicker")}</p>
+          <h1>${t("hero.title")}</h1>
+          <p class="hero-sub">${t("hero.sub")}</p>
+          <div class="hero-actions">
+            <button type="button" class="btn btn-dark" id="scroll-dogs">${t("hero.ctaAdopt")}</button>
+            <a href="#/post" class="btn btn-outline-dark">${t("hero.ctaRehome")}</a>
+          </div>
         </div>
+        <div class="hero-art" aria-hidden="true">${logoSVG()}</div>
       </div>
     </section>
 
@@ -185,7 +192,9 @@ async function viewBrowse() {
     document.getElementById("result-count").textContent = t("browse.count", { n: list.length });
     document.getElementById("dog-grid").innerHTML = list.length
       ? list.map(dogCard).join("")
-      : `<p class="empty">${t("browse.empty")}</p>`;
+      : dogs.length
+        ? `<p class="empty">${t("browse.empty")}</p>`
+        : `<div class="empty">${logoSVG()}<p>${t("browse.none")}</p><a href="#/post" class="btn">${t("hero.ctaRehome")}</a></div>`;
   };
 
   const inputs = { q: "f-q", province: "f-province", size: "f-size", age: "f-age", sex: "f-sex" };
@@ -598,6 +607,8 @@ async function router() {
     app.innerHTML = `<div class="container section"><p class="error">${t("error.generic")} ${esc(err.message)}</p></div>`;
   }
 }
+
+document.querySelectorAll("[data-logo]").forEach((el) => (el.outerHTML = logoSVG()));
 
 document.addEventListener("click", (e) => {
   const link = e.target.closest("[data-next]");
