@@ -192,7 +192,11 @@ function createSupabaseApi({ supabaseUrl, supabaseAnonKey }) {
 
     getUser,
     async signUp({ name, email, password }) {
-      const data = check(await sb.auth.signUp({ email, password, options: { data: { name: name.trim() } } }));
+      // Send the confirmation link back to this page (not Supabase's default localhost address)
+      const emailRedirectTo = location.protocol.startsWith("http") ? location.origin + location.pathname : undefined;
+      const data = check(
+        await sb.auth.signUp({ email, password, options: { data: { name: name.trim() }, emailRedirectTo } })
+      );
       return { needsConfirm: !data.session };
     },
     async signIn({ email, password }) {

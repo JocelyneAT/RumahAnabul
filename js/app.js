@@ -553,7 +553,7 @@ function viewLogin(mode = "login") {
         const { needsConfirm } = await api.signUp({ name: document.getElementById("au-name").value, email, password });
         if (needsConfirm) {
           const info = document.getElementById("au-info");
-          info.textContent = t("auth.confirmEmail");
+          info.innerHTML = t("auth.confirmEmail", { email });
           info.hidden = false;
           return;
         }
@@ -570,10 +570,20 @@ function viewLogin(mode = "login") {
 /* ---------- router ---------- */
 
 async function router() {
+  // Coming back from the confirmation email: Supabase puts the login (or an error) in the address
+  const fromEmail = /^#(access_token|error)=/.test(location.hash);
+  const emailParams = fromEmail ? new URLSearchParams(location.hash.slice(1)) : null;
+
   const [page, id] = location.hash.replace(/^#\/?/, "").split("/");
   app.onclick = null;
   app.onchange = null;
   currentUser = await api.getUser();
+
+  if (fromEmail) {
+    history.replaceState(null, "", location.pathname);
+    if (emailParams.has("error")) toast(emailParams.get("error_description") || t("error.generic"), true);
+    else if (currentUser) toast(t("auth.confirmed"));
+  }
   renderChrome();
   window.scrollTo(0, 0);
 

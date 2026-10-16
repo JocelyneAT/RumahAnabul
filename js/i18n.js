@@ -133,7 +133,8 @@ const STRINGS = {
     "auth.name": "Nama",
     "auth.email": "Email",
     "auth.password": "Kata sandi (minimal 6 karakter)",
-    "auth.confirmEmail": "Cek emailmu untuk konfirmasi akun, lalu masuk.",
+    "auth.confirmEmail": "Hampir selesai! Kami mengirim email ke {email}. Klik \"Confirm email address\" di email itu, nanti kamu otomatis masuk. Tidak ada email? Cek folder Spam.",
+    "auth.confirmed": "Email terkonfirmasi. Selamat datang di Rumah Anabul!",
     "auth.demoNote": "Mode demo: akun hanya tersimpan di browser ini. Jangan pakai kata sandi yang biasa kamu pakai.",
 
     "error.generic": "Ada yang salah. Coba lagi.",
@@ -308,7 +309,8 @@ const STRINGS = {
     "auth.name": "Name",
     "auth.email": "Email",
     "auth.password": "Password (at least 6 characters)",
-    "auth.confirmEmail": "Check your email to confirm your account, then log in.",
+    "auth.confirmEmail": "Almost done! We sent an email to {email}. Click \"Confirm email address\" in it and you'll be logged in automatically. No email? Check your Spam folder.",
+    "auth.confirmed": "Email confirmed. Welcome to Rumah Anabul!",
     "auth.demoNote": "Demo mode: accounts are saved only in this browser. Don't use a password you use elsewhere.",
 
     "error.generic": "Something went wrong. Please try again.",
