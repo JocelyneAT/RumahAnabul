@@ -36,7 +36,7 @@ function blobToDataURL(blob) {
 }
 
 function createDemoApi() {
-  const KEY = "happypaws-demo-v1";
+  const KEY = "rumahanabul-demo-v1";
   let db = null;
   try {
     db = JSON.parse(localStorage.getItem(KEY));

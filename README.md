@@ -1,4 +1,6 @@
-# Happy Paws — dog rehoming community for Indonesia
+# Rumah Anabul
+
+A dog rehoming community for Indonesia.
 
 A website where owners who can no longer keep their dog (moving, money problems, illness…)
 can find adopters who really love dogs. Bahasa Indonesia by default, with an English toggle.

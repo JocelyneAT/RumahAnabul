@@ -1,4 +1,4 @@
--- Happy Paws database setup.
+-- Rumah Anabul database setup.
 -- Run this once in Supabase: SQL Editor → New query → paste everything → Run.
 
 -- Dogs posted by owners who need to rehome them

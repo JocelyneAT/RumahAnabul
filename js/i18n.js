@@ -8,7 +8,7 @@ const STRINGS = {
     "nav.logout": "Keluar",
     "nav.langLabel": "Switch to English",
     "demo.banner": "Mode demo: anjing di sini hanya contoh, dan data yang kamu isi hanya tersimpan di browser ini.",
-    "footer": "Happy Paws · Komunitas pencinta anjing Indonesia. Adopsi selalu gratis, anjing tidak untuk dijual.",
+    "footer": "Rumah Anabul · Komunitas pencinta anjing Indonesia. Adopsi selalu gratis, anjing tidak untuk dijual.",
 
     "hero.title": "Rumah baru untuk anjing yang disayang",
     "hero.sub": "Kadang pemilik terpaksa melepas anjingnya karena pindah, kesulitan ekonomi, atau sakit. Di sini mereka bisa menemukan adopter yang benar-benar sayang anjing.",
@@ -183,7 +183,7 @@ const STRINGS = {
     "nav.logout": "Log out",
     "nav.langLabel": "Ganti ke Bahasa Indonesia",
     "demo.banner": "Demo mode: these dogs are examples, and anything you enter is saved only in this browser.",
-    "footer": "Happy Paws · A community for dog lovers in Indonesia. Adoption is always free. Dogs are never for sale.",
+    "footer": "Rumah Anabul · A community for dog lovers in Indonesia. Adoption is always free. Dogs are never for sale.",
 
     "hero.title": "A new home for a much-loved dog",
     "hero.sub": "Sometimes owners have to give up their dog because they're moving, struggling with money, or ill. Here they can find adopters who truly love dogs.",
@@ -353,7 +353,7 @@ const STRINGS = {
 
 let lang = "id";
 try {
-  lang = localStorage.getItem("happypaws-lang") || "id";
+  lang = localStorage.getItem("rumahanabul-lang") || "id";
 } catch {}
 if (!STRINGS[lang]) lang = "id";
 document.documentElement.lang = lang;
@@ -362,7 +362,7 @@ function setLang(next) {
   lang = next;
   document.documentElement.lang = next;
   try {
-    localStorage.setItem("happypaws-lang", next);
+    localStorage.setItem("rumahanabul-lang", next);
   } catch {}
 }
 
